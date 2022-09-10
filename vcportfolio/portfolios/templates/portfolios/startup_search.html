@@ -1,0 +1,27 @@
+{% extends 'portfolios/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class = "container">
+    <form method = "GET" action = "{% url 'search' %}">
+        <input type="text" placeholder="Enter company" size = "50" name="query" value="{{ request.GET.query }}">
+          <button type="submit"><i class="fas fa-search"></i></button>
+    </form>
+</div>
+<br></br>
+{% for startup in startup_list %}
+<article classs= "media content-section">
+    <div class="container text-center" >
+        <div class="border">
+            <img class = "rounded-circle article-img" src = "{{ startup.logo.url }}" >
+            <div>
+                <h3>{{ startup.startup_name }}</h3>
+                <p>Industry: {{ startup.industry }}</p>
+                <p>Description: {{ startup.description }}</p>
+            </div>
+        </div>
+    </div>
+</article>
+{% empty %}
+    <p>Your search did not provide any results</p>
+{% endfor %}
+{% endblock content %}
