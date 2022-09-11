@@ -22,31 +22,16 @@
 	<header class="site-header">
 	  <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
 	    <div class="container">
-	      <a class="navbar-brand mr-4" href="#">Posts</a>
+	      <a class="navbar-brand mr-4" href="#">Portfolio</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	      </button>
 	      <div class="collapse navbar-collapse" id="navbarToggle">
-	        <div class="navbar-nav mr-auto">
-				<a class="nav-item nav-link" href="{%  url 'home' %}">Home</a>
-	        	<a class="nav-item nav-link" href="{% url 'admin' %}">Admin</a>
-	        </div>
 	        <!-- Navbar Right Side -->
 	        <div class="navbar-nav">
-	        	{% if user.is_authenticated %}
-	        	<!-- <div class="dropdown">
-  					<a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    				More actions
-  					</a>
-				</div> --> 
+					<a class="nav-item nav-link" href="{%  url 'home' %}">Home</a>
+		        	<a class="nav-item nav-link" href="{% url 'admin' %}">Admin</a>
 	        		<a class="nav-item nav-link" href="{% url 'create' %}">New post</a>
-					<a class="nav-item nav-link" href="#">Profile</a>
-	        		<a class="nav-item nav-link" href="#">Logout</a>
-	        		
-	        	{% else %}
-		        	<a class="nav-item nav-link" href="#">Login</a>
-		        	<a class="nav-item nav-link" href="#">Register</a>
-		        {% endif %}
 	        </div>
 	      </div>
 	    </div>

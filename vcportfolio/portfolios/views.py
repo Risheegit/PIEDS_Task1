@@ -44,6 +44,7 @@ class External_Redirect (RedirectView):
 class StartupFilter(View):
     def post (self, request, *args, **kwargs):
         given_industry = request.POST['industry']
+        print("The given industry is ", given_industry)
         filtered_startup = Startup.objects.filter(industry = given_industry)
         context = {
             'filtered_startup':filtered_startup

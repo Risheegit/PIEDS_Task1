@@ -9,9 +9,9 @@
 	</div>
 	<br></br>
 	<!-- Making a filter -->
-	<form action="startup-filter" method="post">
+	<form action="{% url 'startup-filter' %}" method="post">
 		{% csrf_token %}
-		<label for="Industry">Language</label>
+		<label for="Industry">Choose your industry</label>
 		<select name="industrties" id="industrties" size="4">
 		  <option value="Technology">Technology</option>
 		  <option value="Consumer">Consumer</option>
