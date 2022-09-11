@@ -40,3 +40,12 @@ class External_Redirect (RedirectView):
         print(request.POST['mybtn'])
         website = request.POST['mybtn']
         return redirect (website)
+
+class StartupFilter(View):
+    def post (self, request, *args, **kwargs):
+        given_industry = request.POST['industry']
+        filtered_startup = Startup.objects.filter(industry = given_industry)
+        context = {
+            'filtered_startup':filtered_startup
+        }
+        return render (request, 'portfolios/filter_startups.html', context)

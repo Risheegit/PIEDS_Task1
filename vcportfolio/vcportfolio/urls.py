@@ -18,7 +18,7 @@ from django.urls import path, include, reverse_lazy
 from django.conf import settings 
 from django.views.generic.base import RedirectView
 from django.conf.urls.static import static
-from portfolios.views import StartupSearch, External_Redirect
+from portfolios.views import StartupSearch, External_Redirect, StartupFilter
 from portfolios import views as portfolio_views
 
 urlpatterns = [
@@ -28,7 +28,8 @@ urlpatterns = [
     path('home/', include("portfolios.urls")),
     path('portfolios/', include("portfolios.urls")),
     path('search/', StartupSearch.as_view(), name='search'),
-    path('external-redirect/', External_Redirect.as_view() , name = 'external-redirect' )
+    path('external-redirect/', External_Redirect.as_view() , name = 'external-redirect' ),
+    path('filter/', StartupFilter.as_view(), name= 'startup-filter')
 ]
 
 if settings.DEBUG :

@@ -8,6 +8,19 @@
 		</form>
 	</div>
 	<br></br>
+	<!-- Making a filter -->
+	<form action="startup-filter" method="post">
+		{% csrf_token %}
+		<label for="Industry">Language</label>
+		<select name="industrties" id="industrties" size="4">
+		  <option value="Technology">Technology</option>
+		  <option value="Consumer">Consumer</option>
+		  <option value="HealthTech">HealthTech</option>
+		  <option value="FinTech">FinTech</option>
+		  <option value="Consumer">Consumer</option>
+		</select>
+		<input type="submit" name = 'industry' value="Submit" />
+  </form>
 	<!-- Displaying every startup -->
 	{% for startup in startups%}
 		<article class="media content-section">
