@@ -8,14 +8,6 @@
 		</form>
 	</div>
 	<br></br>
-	<div class="header-zoom">
-<img src="https://uploads-ssl.webflow.com/5ec07c9773c2777cf8c2e66a/5ec07edca160652dccf15b40_deals-header.jpg" 
-style="opacity: 1;" data-w-id="00e3f649-a34c-c0e5-f1dd-a202cd436739" sizes="100vw" 
-srcset="https://uploads-ssl.webflow.com/5ec07c9773c2777cf8c2e66a/5ec07edca160652dccf15b40_deals-header-p-500.jpeg 500w,
- https://uploads-ssl.webflow.com/5ec07c9773c2777cf8c2e66a/5ec07edca160652dccf15b40_deals-header-p-800.jpeg 800w,
- https://uploads-ssl.webflow.com/5ec07c9773c2777cf8c2e66a/5ec07edca160652dccf15b40_deals-header-p-2000.jpeg 2000w,
- https://uploads-ssl.webflow.com/5ec07c9773c2777cf8c2e66a/5ec07edca160652dccf15b40_deals-header.jpg 3000w" 
-width="100%" alt="" class="headerzoom-image portfoliozoomiamge"></div>
 	<!-- Making a filter -->
 	<form action="{% url 'startup-filter' %}" method="post">
 		{% csrf_token %}
@@ -29,14 +21,11 @@ width="100%" alt="" class="headerzoom-image portfoliozoomiamge"></div>
 		</select>
 		<input type="submit" name="industry" value="Submit" />
   </form>
-	<!-- Displaying every startup -->
-	<div  class = "container">
-	<div class = "row" >
+	<!-- Displaying every startup -->	<div class="row row-cols-1 row-cols-md-3 g-4">
 	{% for startup in startups%}
-	<div class="row row-cols-1 row-cols-md-2 g-4">
-		<div class = "col">
-		<div class="card border-dark mt-3 mb-3 mr-3 h-100" style="width: 18rem;">
-			<img src="{{ startup.logo.url }}" class="card-img-top" width= "200" height="200" alt="Image not found">
+	<div class= "col">
+	<div class="card border-dark mb-3" style="width: 18rem;">
+			<img src="{{ startup.logo.url }}" class="card-img-top" alt="Image not found">
 			<div class="card-body">
 			  <h5 class="card-title">{{ startup.startup_name }}</h5>
 			  <p class="card-text">Industry: {{startup.industry}}</p>
@@ -47,7 +36,7 @@ width="100%" alt="" class="headerzoom-image portfoliozoomiamge"></div>
 			</form>
 			</div>
 		  </div>
-		</div>
+	<div>
 	</div>
 	{% empty %}
 	<div class = "container">

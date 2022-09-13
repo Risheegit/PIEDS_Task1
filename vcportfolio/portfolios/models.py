@@ -1,4 +1,5 @@
 from django.db import models
+from PIL import Image
 
 # Create your models here.
 class Startup (models.Model):
@@ -11,3 +12,9 @@ class Startup (models.Model):
     def __str__(self) :
         return self.startup_name
 
+    def save(self):
+        super().save()
+        img = Image.open(self.logo.path)
+        output_size = (300, 300)
+        img.thumbnail (output_size)
+        img.save(self.logo.path)

@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-7_0$mwn7hhxmnlht#&9at$n1teyi__(2ub-5x(td+w(fpzn+l=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['54.185.196.226', 'localhost']
+ALLOWED_HOSTS = ['54.185.196.226','djvcportfolio.ml', 'www.djvcportfolio.ml', 'localhost']
 
 
 # Application definition

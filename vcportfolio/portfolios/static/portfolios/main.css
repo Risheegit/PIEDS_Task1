@@ -5,7 +5,7 @@ body {
   }
   
   h1, h2, h3, h4, h5, h6 {
-    color: #444444;
+	color: hsl(264, 77%, 26%);
   }
   
   ul {
@@ -29,7 +29,7 @@ body {
   }
   
   .content-section {
-    background: #ffffff;
+    background: #95F9E3;
     padding: 10px 20px;
     border: 1px solid #dddddd;
     border-radius: 3px;
