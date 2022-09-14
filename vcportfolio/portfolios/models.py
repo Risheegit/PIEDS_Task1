@@ -11,9 +11,3 @@ class Startup (models.Model):
     def __str__(self) :
         return self.startup_name
 
-    def save(self):
-        super().save()
-        img = Image.open(self.logo.path)
-        output_size = (200, 200)
-        img.thumbnail (output_size)
-        img.save(self.logo.path)
