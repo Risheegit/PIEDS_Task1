@@ -20,6 +20,8 @@ from django.views.generic.base import RedirectView
 from django.conf.urls.static import static
 from portfolios.views import StartupSearch, External_Redirect, StartupFilter
 from portfolios import views as portfolio_views
+from users import views as user_views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,7 +31,12 @@ urlpatterns = [
     path('portfolios/', include("portfolios.urls")),
     path('search/', StartupSearch.as_view(), name='search'),
     path('external-redirect/', External_Redirect.as_view() , name = 'external-redirect' ),
-    path('startup-filter/', StartupFilter.as_view(), name ='startup-filter')
+    path('startup-filter/', StartupFilter.as_view(), name ='startup-filter'),
+    path ('login/', auth_views.LoginView.as_view(template_name = 'users/login.html'),name = 'login' ),
+    path ('logout/', auth_views.LogoutView.as_view(template_name = 'users/logout.html'),name = 'logout' ),
+    path('register/', user_views.register, name = 'register'),
+    path ('profile/', user_views.profile, name = 'profile'),
+    path("accounts/", include("allauth.urls")),
 ]
 
 if settings.DEBUG :

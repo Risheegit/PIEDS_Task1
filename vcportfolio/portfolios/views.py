@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.db.models import Q
 from django.views.generic import ListView, CreateView, RedirectView
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from .models import Startup
 
 # Create your views here.
@@ -11,10 +13,12 @@ class StartupListView (ListView):
     context_object_name = 'startups'
 
 #Make a add option if admin 
-class StartupCreateView ( CreateView):
+class StartupCreateView (SuccessMessageMixin,  CreateView):
 	model = Startup
-	fields = ['startup_name', 'industry', 'logo', 'description']
+	fields = ['startup_name', 'industry', 'logo', 'description', 'website']
 	success_url = '/home' 
+	success_message = "Your startup was added successfully"
+
 
 class StartupSearch(View):
     def get(self, request, *args, **kwargs):
@@ -43,10 +47,11 @@ class External_Redirect (RedirectView):
 
 class StartupFilter(View):
     def post (self, request, *args, **kwargs):
-        given_industry = request.POST.get('industries')
+        print(request.POST)
+        given_industry = request.POST.get('industries', False)
         print("The given industry is ", given_industry)
         filtered_startup = Startup.objects.filter(industry = given_industry)
         context = {
-            'filtered_startup':filtered_startup
+            'filtered_startup':filtered_startup,
         }
         return render (request, 'portfolios/filter_startups.html', context)

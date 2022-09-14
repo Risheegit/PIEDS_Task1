@@ -12,15 +12,15 @@
     <link rel="stylesheet" type="text/css" href="{% static 'portfolios/main.css' %}">
 
 	{% if title %}
-		<title>Django Posts - {{title}}</title>
+		<title>Portfolios - {{title}}</title>
 	{% else %}
-		<title>Django Posts </title>
+		<title>Portfolios </title>
 	{% endif %}
 </head>
 <body>
 	<!-- Navigation menu -->
 	<header class="site-header">
-	  <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+	  <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top py-4 ">
 	    <div class="container">
 	      <a class="navbar-brand mr-4" href="#">Portfolio</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,10 +28,20 @@
 	      </button>
 	      <div class="collapse navbar-collapse" id="navbarToggle">
 	        <!-- Navbar Right Side -->
-	        <div class="navbar-nav">
+	        <div class="navbar-nav mr-auto ">
 					<a class="nav-item nav-link" href="{%  url 'home' %}">Home</a>
 		        	<a class="nav-item nav-link" href="{% url 'admin' %}">Admin</a>
+	        		<a class="nav-item nav-link" href="{% url 'create' %}">Add startup</a>
+	        </div>
+			<div class="navbar-nav">
+	        	{% if user.is_authenticated %}
 	        		<a class="nav-item nav-link" href="{% url 'create' %}">New post</a>
+					<a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+	        		<a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+	        	{% else %}
+		        	<a class="nav-item nav-link" href="{% url 'login'%}">Login</a>
+		        	<a class="nav-item nav-link" href="{% url 'register'%}">Register</a>
+		        {% endif %}
 	        </div>
 	      </div>
 	    </div>
@@ -40,12 +50,14 @@
 	<!-- Here the block content goes -->
 	<div class = "container"> 
 		{% if messages %}
+			<br></br>
 			{% for message in messages %}
 				<div class = "alert alert-{{message.tags}}">
 					{{message}}
 				</div>
 			{% endfor %}
 		{% endif %}
+		<br></br>
 		{% block content %} {% endblock %}
 		
 	</div>

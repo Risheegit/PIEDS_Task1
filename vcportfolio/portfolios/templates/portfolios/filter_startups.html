@@ -1,28 +1,31 @@
 {% extends "portfolios/base.html" %}
 {% block content %}
 	<!-- Making a search bar -->
-	<div class = "container">
+	<div class = "container" >
 		<form method = "GET" action = "{% url 'search' %}">
-			<input type="text" placeholder="Enter company" size = "50" name="query" value="{{ request.GET.query }}">
+			<input class = "form-control form-control-inline" type="text" style = " background-color: #7a7371;"  placeholder="Enter company" size = "80" name="query" value="{{ request.GET.query }}">
 			<button type="submit"><i class="fas fa-search"></i></button>
 		</form>
 	</div>
 	<br></br>
+	<div class="header-zoom">
 	<!-- Making a filter -->
-	<form action="#" method="post">
+	<form action="{% url 'startup-filter' %}" method="post">
 		{% csrf_token %}
-		<label for="Industry">Choose your industry</label>
-		<select name="industrties" id="industrties" size="4">
+		<label for="Industry">Choose your industry: &emsp;</label>
+		<select name="industries" id="industries">
 		  <option value="Technology">Technology</option>
 		  <option value="Consumer">Consumer</option>
 		  <option value="HealthTech">HealthTech</option>
 		  <option value="FinTech">FinTech</option>
 		  <option value="Consumer">Consumer</option>
 		</select>
-		<input type="submit" name = 'industry' value="Submit" />
-  </form>
+		&ensp;
+		<input type="submit" name="industry" value="Search" />
+		<br></br>
+  	</form>
 	<!-- Displaying every startup -->
-	{% for startup in filtered_startups%}
+	{% for startup in filtered_startup %}
 		<article class="media content-section">
 			<img class = "rounded-circle article-img" src = "{{ startup.logo.url }}" >
 			<div class="media-body">
@@ -41,7 +44,9 @@
 		</article> 
 	{% empty %}
 	<div class = "container">
-		<h3>No posts yet! Be the first to post</h3></div>
+		<br</br>
+		<br></br>
+		<h3>We do not have startups belonging to that category yet</h3></div>
 	{% endfor %}
 
 {% endblock content %}

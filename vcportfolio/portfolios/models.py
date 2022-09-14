@@ -7,7 +7,6 @@ class Startup (models.Model):
     description = models.TextField(blank = True, null =True)
     industry = models.CharField(max_length=50, blank = True, null = True)
     logo = models.ImageField(upload_to = 'logos', default = 'default.jpg')
-    #Add some logos/ link
     website = models.CharField(max_length=50, blank = True, null =True) 
     def __str__(self) :
         return self.startup_name
@@ -15,6 +14,6 @@ class Startup (models.Model):
     def save(self):
         super().save()
         img = Image.open(self.logo.path)
-        output_size = (300, 300)
+        output_size = (200, 200)
         img.thumbnail (output_size)
         img.save(self.logo.path)
