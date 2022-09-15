@@ -1,11 +1,12 @@
 body {
-  background: #28312e;
-  color: white;
+  background: white;
+  color: black;
   margin-top: 5rem;
+  font-family:  'poppins', 'arial', 'helvetica';
 }
 
 #container {
-  background: #61726e;
+  background: white;
 }
 
 h1, h2, h4, h5, h6 {
@@ -21,15 +22,15 @@ ul {
 }
 
 .bg-steel {
-  background-color: #140f0d;
+  background-color: #8429f2;
 }
 
 .site-header .navbar-nav .nav-link {
-  color: #cbd5db;
+  color: white;
 }
 
 .site-header .navbar-nav .nav-link:hover {
-  color: #4ac44e;
+  font-weight: 500;
 }
 
 .site-header .navbar-nav .nav-link.active {
@@ -38,7 +39,7 @@ ul {
 
 
 .content-section {
-  background: #768b86;
+  background: white;
   padding: 10px 20px;
   border: 1px solid #dddddd;
   border-radius: 3px;
@@ -97,7 +98,7 @@ a.article-title:hover {
 }
 
 .card-body {
-  background-color: #61726e;
+  background-color: white;
 }
 
 .form-control-inline {
@@ -111,11 +112,11 @@ a.article-title:hover {
 }
 
 .card-text {
-color: white;
+color: black;
 }
 
 button[type=submit] {
-background-color: #61726e;
+background-color: white;
 border-radius: 5px;
 }
 
@@ -126,9 +127,10 @@ border-radius: 5px;
 }
 
 input[type=submit] {
-background-color: black;
-color: white;
+background-color: white;
+color: black;
 border-radius: 5px;
+padding: 5px;
 }
 
 input[type=submit]:hover {
@@ -136,9 +138,10 @@ color: #4ac44e
 }
 
 select{
-background-color: #61726e;
+background-color: white;
 border-radius: 3px;
-color: white;
+color: black;
+padding: 5px;
 }
 
 .card {

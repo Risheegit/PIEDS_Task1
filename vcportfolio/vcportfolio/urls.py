@@ -37,6 +37,7 @@ urlpatterns = [
     path('register/', user_views.register, name = 'register'),
     path ('profile/', user_views.profile, name = 'profile'),
     path("accounts/", include("allauth.urls")),
+    path('subscribe/', portfolio_views.subscribe, name = 'subscribe')
 ]
 
 if settings.DEBUG :

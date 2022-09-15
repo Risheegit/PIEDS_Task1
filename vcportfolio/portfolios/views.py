@@ -5,6 +5,9 @@ from django.views.generic import ListView, CreateView, RedirectView
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from .models import Startup
+from django.conf import settings
+from django.contrib import messages
+from django.core.mail import send_mail
 
 # Create your views here.
 class StartupListView (ListView):
@@ -55,3 +58,12 @@ class StartupFilter(View):
             'filtered_startup':filtered_startup,
         }
         return render (request, 'portfolios/filter_startups.html', context)
+
+def subscribe (request):
+    subject = 'Welcome to djvcportfolios'
+    message = f'Hi {request.user.username}, thank you registering with us'
+    email_from = settings.EMAIL_HOST_USER
+    recipient_list = [request.user.email, ]
+    send_mail (subject, message, email_from, recipient_list)
+    messages.success(request, f'Notifications has been enabled !')
+    return redirect ('/home/')

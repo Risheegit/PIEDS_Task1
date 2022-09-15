@@ -1,13 +1,13 @@
 {% extends "portfolios/base.html" %}
 {% block content %}
 	<!-- Making a search bar -->
-	<div class = "container" >
+	<!-- <div class = "container" >
 		<form method = "GET" action = "{% url 'search' %}">
 			<input class = "form-control form-control-inline" type="text" style = " background-color: white;"  placeholder="Enter company" size = "80" name="query" value="{{ request.GET.query }}">
 			<button type="submit"><i class="fas fa-search"></i></button>
 		</form>
 	</div>
-	<br></br>
+	<br></br> -->
 	<div class="header-zoom">
 	<!-- Making a filter -->
 	<form action="{% url 'startup-filter' %}" method="post">
@@ -31,7 +31,7 @@
 	<!-- <div class="card-columns d-flex justify-content-center"> -->
 		<div class = "col-sm-4 mb-3">
 		  <div class="card border-dark mt-3 mb-3 mr-3 h-100" style="width: 18rem;">
-			<img src="{{ startup.logo.url }}" class="card-img-top" width= "100" height="200" alt="Image not found">
+			<img src="{{ startup.logo.url }}" class="card-img-top" width= "100" height="170" alt="Image not found">
 			<div class="card-body">
 			  <h5 class="card-title">{{ startup.startup_name }}</h5>
 			  <p class="card-text">Industry: {{startup.industry}}</p>
