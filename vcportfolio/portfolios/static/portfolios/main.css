@@ -41,7 +41,7 @@ ul {
 .content-section {
   background: white;
   padding: 10px 20px;
-  border: 1px solid #dddddd;
+  border: 2px solid black;
   border-radius: 3px;
   margin-bottom: 20px;
 }
@@ -107,11 +107,16 @@ a.article-title:hover {
   padding: 5px 10px;
   border-radius: 5px;
   background-color: white;
-  color: white;
-  text-decoration-color: #e9dbd8dd;
-  outline: none;
-  border: none;
+  color: black;
+  text-decoration-color: black  ;
+  /* outline: none;
+  border: none; */
 }
+
+.form-control {
+  border: black solid 1px;
+}
+
 
 .card-text {
 color: black;
@@ -159,8 +164,12 @@ margin: 10px;
 legend{
 color: black;
 font-weight: 500;
+border: black;
 }
 
+.border-bottom {
+
+}
 .text-secondary {
 color: #140f0d;
 }
@@ -200,6 +209,6 @@ color: black;
   padding-left: 10px;
 }
 
-.form-control:focus{
+/* .form-control:focus{
   outline: none !important;
-}
+} */
