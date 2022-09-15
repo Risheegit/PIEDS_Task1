@@ -2,17 +2,21 @@
 {% load crispy_forms_tags %}
 {% block content %}
 {% for startup in startup_list %}
-<article classs= "media content-section">
-    <div class="container text-center" >
-        <div class="border">
-            <img class = "rounded-circle article-img" src = "{{ startup.logo.url }}" >
-            <div>
-                <h3>{{ startup.startup_name }}</h3>
-                <p>Industry: {{ startup.industry }}</p>
-                <p>Description: {{ startup.description }}</p>
-            </div>
+<article class="media content-section">
+    <img class = "rounded-circle article-img" src = "{{ startup.logo.url }}" >
+    <div class="media-body">
+        <div class="article-metadata">
+          <h1>{{ startup.startup_name }}</h1>
         </div>
-    </div>
+    <h5>Industry: {{startup.industry}}</h5>
+    <p><a class="article-title" href="#">{{ startup.description }}</a></p>
+    {% if startup.website%}
+        <form action = "{% url 'external-redirect'  %}" method = "post">
+            {% csrf_token %}
+            <button type = "submit" name = 'mybtn' value = {{startup.website}}>Visit site</button>
+        </form>
+    {% endif %}
+  </div>	
 </article>
 {% empty %}
     <p>Your search did not provide any results</p>
