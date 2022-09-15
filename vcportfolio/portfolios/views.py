@@ -1,3 +1,4 @@
+from urllib import request
 from django.shortcuts import render, redirect
 from django.views import View
 from django.db.models import Q
@@ -21,13 +22,6 @@ class StartupCreateView (SuccessMessageMixin,  CreateView):
 	fields = ['startup_name', 'industry', 'logo', 'description', 'website']
 	success_url = '/home' 
 	success_message = "Your startup was added successfully"
-	def get(self, request, *args, **kwargs):
-		subject = 'A new company has been added'
-		message = f'Hi {request.user.username}, a new company has been added'
-		email_from = settings.EMAIL_HOST_USER
-		recipient_list = [request.user.email, ]
-		send_mail (subject, message, email_from, recipient_list)
-
 
 class StartupSearch(View):
     def get(self, request, *args, **kwargs):
@@ -72,4 +66,14 @@ def subscribe (request):
     recipient_list = [request.user.email, ]
     send_mail (subject, message, email_from, recipient_list)
     messages.success(request, f'Notifications has been enabled !')
+    return redirect ('/home/')
+
+def startup_added (request):
+    subject = 'A new company has been added'
+    print('HI')
+    print(request.user.email)
+    message = f'Hi {request.user.username}, a new company has been added'
+    email_from = settings.EMAIL_HOST_USER
+    recipient_list = [request.user.email, ]
+    send_mail (subject, message, email_from, recipient_list)
     return redirect ('/home/')

@@ -9,10 +9,9 @@
 				</legend>
 				{{form|crispy }}
 			</fieldset>
-			<div class="form-group">
-				<button class = "btn btn-outline-info" type = "submit">Add </button>
-
-			</div>				
+			<form method="GET" action="{% url 'startup-added' %}">
+				<button value="addbtn" class = "btn btn-outline-info" type = "submit">Add </button>	
+			</form>		
 		</form>	
 	</div>
 {% endblock content %}

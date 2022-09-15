@@ -1,13 +1,6 @@
 {% extends 'portfolios/base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class = "container">
-    <form method = "GET" action = "{% url 'search' %}">
-        <input type="text" placeholder="Enter company" size = "50" name="query" value="{{ request.GET.query }}">
-          <button type="submit"><i class="fas fa-search"></i></button>
-    </form>
-</div>
-<br></br>
 {% for startup in startup_list %}
 <article classs= "media content-section">
     <div class="container text-center" >

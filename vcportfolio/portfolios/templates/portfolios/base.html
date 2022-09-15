@@ -40,14 +40,13 @@
 		        	<a class="nav-item nav-link" href="{% url 'register'%}">Register</a>
 		        {% endif %}
 	        </div>
+			<!-- Making the search bar -->
 			<form method = "GET" action = "{% url 'search' %}">
-				<div class = "form-group has-feedback">
-				<i class="glyphicon glyphicon-user form-control-feedback"></i>
-				<input class = "form-control me-2 pl-3" type="text" style = " background-color: white;"  placeholder="Search" padding = "100px" size = "50" name="query" value="{{ request.GET.query }}">
-				<span class="glyphicon glyphicon-search"></span>
+				<div class = "box">
+				<i class="fa fa-search"></i>
+				<input type="text" style = " background-color: white;"  placeholder="Search" padding = "100px" size = "50" name="query" value="{{ request.GET.query }}">
 				</div>
 			</form>
-	      </div>
 	    </div>
 	  </nav>
 	</header>
