@@ -21,6 +21,12 @@ class StartupCreateView (SuccessMessageMixin,  CreateView):
 	fields = ['startup_name', 'industry', 'logo', 'description', 'website']
 	success_url = '/home' 
 	success_message = "Your startup was added successfully"
+	def get(self, request, *args, **kwargs):
+		subject = 'A new company has been added'
+		message = f'Hi {request.user.username}, a new company has been added'
+		email_from = settings.EMAIL_HOST_USER
+		recipient_list = [request.user.email, ]
+		send_mail (subject, message, email_from, recipient_list)
 
 
 class StartupSearch(View):
